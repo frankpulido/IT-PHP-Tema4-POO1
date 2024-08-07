@@ -2,7 +2,7 @@
 class PokerDice {
 
     // Atributo
-    protected $dice = []; // No quiero que sea posible alterar los valores desde la aplicación
+    protected $dice = []; // No quiero que sea posible alterar los valores desde la aplicación (quizás deba usar private?)
 
     // Constructor
     public function __construct($dice = ['As', 'K', 'J', '7', '8']) {

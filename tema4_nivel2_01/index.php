@@ -1,46 +1,22 @@
 <?php
+require "pokerdice.php";
+/*
+Frank Pulido - Tema 4 [POO1] - Nivel 2 - Ejercicio 1
 
-class PokerDice {
+ENUNCIADO :
+Crea la clase PokerDice. Las caras de un dado de póquer tienen las siguientes figuras: As, K, Q, J, 7 y 8.
+Crea el método throw que no hace otra cosa que echar el dado, es decir, genera un valor aleatorio para el objeto al que se le aplica el método.
+Crea también el método shapeName, que diga cuál es la figura que ha salido en el último tirón del dado en cuestión.
+Realiza una aplicación que permita echar cinco dados de póquer a la vez.
+Además, programa el método getTotalThrows que debe mostrar el número total de tiradas entre todos los dados.
 
-    // Atributo
-    protected $dice = []; // No quiero que sea posible alterar los valores desde la aplicación
+RECURSOS :
+https://www.w3schools.com/php/func_array_shuffle.asp // reordeno los elementos y tomo el valor del primero con array_current()
+https://www.w3schools.com/php/func_array_current.asp // tomar primer valor del array (quizás requiere hacer un reset() previo para reordenar claves)
+https://www.w3schools.com/php/func_array_fill.asp // crear array de 5 dados
+https://www.w3schools.com/php/func_array_walk.asp // ejecutar la misma función con 5 dados del array
 
-    // Constructor
-    public function __construct($dice = ['As', 'K', 'J', '7', '8']) {
-        $this->dice = $dice;
-    }
-
-    // Getter
-    public function getDice() {
-        return $this->dice;
-    }
-
-    // MÉTODOS PROPIOS DE LA CLASE : throwDice() y shapeName()
-
-    // Función "throwDice" (tirar el dado) : hace un shuffle para cambiar aleatoriamente el orden de los elementos y un reset para reindexar.
-    public function throwDice() {
-        shuffle($this->dice);
-        reset($this->dice);
-        //return $this->dice;
-        /* 
-        podríamos cambiar la app para que sólo haga el shuffle, sin return, y evitarnos quizás variables auxiliares que sólo sirven para presentar el estado de los dados
-        por pantalla y mostrar como funciona el programa.
-        */
-    }
-
-    // Función "ShapeName" (resultado de la jugada) : reindexa $keys (sin alterar orden de $values) y me devuelve $dice[0]
-    public function shapeName() {
-        reset($this->dice);
-        /*
-        con el reset ya hecho en throwDice() después del shuffle, este otro es redundante, pero de momento lo dejo hasta haber hecho el juego con varios jugadores
-        y estar seguro de que no es necesario.
-        */
-        return current($this->dice);
-    }
-
-
-}
-
+*/
 
 $dado = new PokerDice();
 
@@ -127,6 +103,16 @@ do {
 } while ($opcion != 0);
 
 
+echo 'DUDA : Debería el atributo único $dice ser de tipo PRIVATE, en lugar de protected???
+Estudiar con detenimiento la función getTotalThrows(). Necesité pasar las variables $set5Dados y $jugadas "por referencia" : &$set5Dados y &$jugadas.
+Necesitaba que el valor de ambas (variables globales) se viese afectado durante la ejecución del método.
+IMPORTANTE : no existe "return", sencillamente afecto sus valores.
+Revisar TODO el programa.
+Recursos :
+https://www.w3schools.com/php/php_superglobals_globals.asp
+Scroll to "Passing Arguments by Reference" :
+https://www.w3schools.com/php/php_functions.asp';
+
 
 function getTotalThrows(&$set5Dados, &$jugadas) {
     for ($i = 0; $i < count($set5Dados); $i++) {
@@ -135,5 +121,17 @@ function getTotalThrows(&$set5Dados, &$jugadas) {
     }
     $jugadas[] = $jugada;
 }
+
+/*
+DUDA : Debería el atributo único $dice ser de tipo PRIVATE, en lugar de protected???
+Estudiar con detenimiento la función getTotalThrows(). Necesité pasar las variables $set5Dados y $jugadas "por referencia" : &$set5Dados y &$jugadas.
+Necesitaba que el valor de ambas (variables globales) se viese afectado durante la ejecución del método.
+IMPORTANTE : no existe "return", sencillamente afecto sus valores.
+Revisar TODO el programa.
+Recursos :
+https://www.w3schools.com/php/php_superglobals_globals.asp
+Scroll to "Passing Arguments by Reference" :
+https://www.w3schools.com/php/php_functions.asp
+*/
 
 ?>
