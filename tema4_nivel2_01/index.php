@@ -91,7 +91,28 @@ do {
             echo "Ya sabes como funcionan el objeto \"dado\" y el array \"set5dados\" que almacena 5 clones de \"dado\", así como los métodos \"throwDice\" y \"shapeName\" de la Clase PokerDice.\n";
             echo "Ahora usaremos el método \"getTotalThrows\" que te permitirá lanzar las veces que quieras y te mostrará el total de lanzamientos y su resultado.\n";
             echo "DEBERES : modificarlo para un juego de X jugadores\n\n";
-            getTotalThrows($set5Dados);
+            
+            unset($jugadas);
+            do {
+                $jugar = (int) readline("Quieres lanzar los dados?\n[1] Si\n[0] No\n");
+                switch ($jugar) {
+                    case 0 :
+                        echo "\nEsperamos que hayas tenido suerte, hasta la próxima!!\n";
+                        break;
+                    case 1 :
+                        getTotalThrows($set5Dados, $jugadas); // La función está definida para el paso de variables por referencia
+                        break;
+                    default :
+                        echo "Debes seleccionar una opción válida.\n\n";
+                        break;
+                }
+            } while ($jugar!= 0);
+            
+            echo "\nHas lanzado los 5 dados un total de " . count($jugadas) . " veces.\n\n";
+            echo "El resultado de los " . count($jugadas) . " lanzamientos del set de 5 dados :\n\n";
+            print_r($jugadas);
+            
+            //getTotalThrows($set5Dados);
             echo "\n\n";
             break;
         case 0 :
@@ -107,30 +128,12 @@ do {
 
 
 
-function getTotalThrows($set5Dados) {
-    do {
-        $jugar = (int) readline("Quieres lanzar los dados?\n[1] Si\n[0] No\n");
-        unset($jugada);
-        switch ($jugar) {
-            case 0 :
-                echo "\nEsperamos que hayas tenido suerte, hasta la próxima!!\n";
-                break;
-            case 1 :
-                for ($i = 0; $i < count($set5Dados); $i++) {
-                    $set5Dados[$i]->throwDice();
-                    $jugada[] = $set5Dados[$i]->shapeName();
-                }
-                $jugadas[] = $jugada;
-                break;
-            default :
-                echo "Debes seleccionar una opción válida.\n\n";
-                break;
-        }
-    } while ($jugar!= 0);
-    
-    echo "\nHas lanzado los 5 dados un total de " . count($jugadas) . " veces.\n\n";
-    echo "El resultado de los " . count($jugadas) . " lanzamientos del set de 5 dados :\n\n";
-    print_r($jugadas);
+function getTotalThrows(&$set5Dados, &$jugadas) {
+    for ($i = 0; $i < count($set5Dados); $i++) {
+        $set5Dados[$i]->throwDice();
+        $jugada[] = $set5Dados[$i]->shapeName();
+    }
+    $jugadas[] = $jugada;
 }
 
 ?>
