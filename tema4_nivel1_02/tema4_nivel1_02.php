@@ -1,5 +1,4 @@
 <?php
-
 /*
 Frank Pulido - Tema 4 [POO1] - Nivel 1 - Ejercicio 2
 

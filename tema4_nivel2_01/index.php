@@ -15,12 +15,11 @@ https://www.w3schools.com/php/func_array_shuffle.asp // reordeno los elementos y
 https://www.w3schools.com/php/func_array_current.asp // tomar primer valor del array (quizás requiere hacer un reset() previo para reordenar claves)
 https://www.w3schools.com/php/func_array_fill.asp // crear array de 5 dados
 https://www.w3schools.com/php/func_array_walk.asp // ejecutar la misma función con 5 dados del array
-
 */
 
 $dado = new PokerDice();
-
 $set5Dados = [];
+
 for ($i = 0; $i <= 4; $i++) {
     $set5Dados[] = clone($dado);
 }
@@ -28,6 +27,9 @@ $jugada = []; // $jugada almacenará el outcome de un lanzamiento de 5 dados : $
 $jugadas = []; // $almacenará todos los outcomes de cada lanzamiento de los 5 dados.
 
 $opcion = -1; // entrada del usuario, menú principal
+
+echo "\nRubén : tengo un \"side effect\" al inicio (el require a la Clase PokerDice) y un \"declaration\" al final (método getTotalThrows) que creé en index porque me pareció demasiado\n";
+echo "crear una nueva clase para el set de dados... Todos los jugadores pueden jugar con el mismo set. Al parecer esto es contrario al PSR-1: Basic Coding Standard... puedes orientarme?...\n\n";
 
 do {
     echo "\nMenú de usuario :\n[1] Presentación del dado de Poker Dice y las funciones \"throwDice\" y \"shapeName\".\n[2] Presentación del set de 5 dados y la jugada.\n[3] Practica el lanzamiento y almacena los resultados con \"getTotalThrows\".\n[0] Salir.\n\n";
@@ -84,8 +86,8 @@ do {
                 }
             } while ($jugar!= 0);
             
-            echo "\nHas lanzado los 5 dados un total de " . count($jugadas) . " veces.\n\n";
-            echo "El resultado de los " . count($jugadas) . " lanzamientos del set de 5 dados :\n\n";
+            echo "\nHas lanzado el set de 5 dados un total de " . count($jugadas) . " veces en esta práctica.\n\n"; // En el método getTotalThrows la variable $totalThrows es static
+            echo "El resultado de los " . count($jugadas) . " lanzamientos :\n\n"; // $totalThrows debe arrojar el mismo valor que count($jugadas) que se pasó "por referencia"
             print_r($jugadas);
             
             //getTotalThrows($set5Dados);
@@ -106,20 +108,24 @@ do {
 echo 'DUDA : Debería el atributo único $dice ser de tipo PRIVATE, en lugar de protected???
 Estudiar con detenimiento la función getTotalThrows(). Necesité pasar las variables $set5Dados y $jugadas "por referencia" : &$set5Dados y &$jugadas.
 Necesitaba que el valor de ambas (variables globales) se viese afectado durante la ejecución del método.
-IMPORTANTE : no existe "return", sencillamente afecto sus valores.
+IMPORTANTE : no existe "return", sencillamente afecto sus valores. Hago un echo para verificar la cuenta de la variable static.
 Revisar TODO el programa.
 Recursos :
 https://www.w3schools.com/php/php_superglobals_globals.asp
 Scroll to "Passing Arguments by Reference" :
 https://www.w3schools.com/php/php_functions.asp';
+echo "\n";
 
 
-function getTotalThrows(&$set5Dados, &$jugadas) {
+function getTotalThrows(&$set5Dados, &$jugadas) { // pasamos las variables "por referencia" y no hacemos return. En "case 3" hacemos unset($jugadas)
+    static $totalThrows = 0; // al ser static esta variable acumulará el total de lanzamientos usando la opción 3 para toda la sesión de usuario
     for ($i = 0; $i < count($set5Dados); $i++) {
         $set5Dados[$i]->throwDice();
         $jugada[] = $set5Dados[$i]->shapeName();
     }
+    $totalThrows++;
     $jugadas[] = $jugada;
+    echo "En esta práctica usted ha lanzado " . count($jugadas) . " veces.\nDurante la sesión de usuario usted ha lanzado un total de ". $totalThrows . " veces.\n";
 }
 
 /*
