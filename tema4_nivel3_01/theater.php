@@ -1,5 +1,5 @@
 <?php
-class movieTheather {
+class MovieTheather {
     private $name;
     private $location;
     private $showing = [];

@@ -39,7 +39,7 @@ class Movie {
 
     public function aboutMovie() {
         $this->setLength();
-        return "Título : $this->title / Director : $this->director / Duración : ($this->hours:$this->minutes) $this->length minutos";
+        return "Título : $this->title / Director : $this->director / Duración : (" . $this->hours . "h:" . $this->minutes . "') $this->length minutos";
     }
 }
 ?>
