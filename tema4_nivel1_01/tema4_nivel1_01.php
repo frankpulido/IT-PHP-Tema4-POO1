@@ -14,7 +14,7 @@ class Employee {
     protected $name; // "private" no permite acceso a los descendientes, no podemos usar este modificador, sólo "public" y "protected"
     protected $salary; // "protected" permite que las clases child accedan y modifiquen sin problema el valor de este atributo
 
-    // Constructor
+    // Constructor : Método "Initialize"
 
     function __construct($name, $salary) {
         $this->name = $name;
@@ -41,7 +41,7 @@ class Employee {
         return $this->salary;
     }
 
-    // Método general
+    // Método general : "Print"
 
     public function echoInfo(){
         $taxes = ($this->salary > 12000)? "debe pagar impuestos (su remuneración anual excede los 12.000 €)" : "NO debe pagar impuestos (su remuneración anual no alcanza los 12.000 €).";
@@ -52,6 +52,8 @@ class Employee {
         }
     }
 }
+
+# Hice la clase CHILD que vi en un ejemplo del material de estudio...
 
 class InternshipStudent extends Employee {
 
@@ -81,26 +83,23 @@ class InternshipStudent extends Employee {
     }
 }
 
-echo"\n\n";
-echo "Rubén : a partir del Nivel 2 (ya hice el Nivel 1), te presentaré las Clases en archivos distintos y usaré \"require()\".\n";
+echo"\n";
+echo "Rubén : a partir del Nivel 2 (ya hice el Nivel 1), te presentaré las Clases en archivos distintos y usaré \"require()\".\n\n";
 
 $frank = new Employee("Frank", 5000); // Esta instrucción da error al declarar la instancia sin atributos para pasarlos luego con sets...
-// $frank->setName("Frank"); // Al crear el objeto sin pasarle atributos para hacer posteriormente el set no funciona (FATAL ERROR). Supongo que hay que
-// $frank->setSalary(5000); // crear un segundo constructor sin atributos.
+// No he probado a hacer múltiples constructores. Supongo que debemos crear un segundo constructor sin atributos... Orden? (menos a más?)
 $frank->echoInfo();
 
-echo"\n";
+echo"\n\n";
 $pedro = new InternshipStudent("Pedro Pérez", "Informática"); // No asigno valor al atributo $this->salary. Tomará '0'.
 $pedro->echoInfoStudent();
 
 
 // Función instanceof (boolean)
 echo "\n\n";
-echo "Usando la función instanceof para distinguir entre clases CHILD :\n";
+echo "Usando la función instanceof para distinguir entre Clases :\n";
 if ($frank instanceof Employee) {echo ($frank instanceof Employee) . ' (1 = TRUE = cierto), $frank es una objeto/instancia de la Clase Employee.';}
 echo "\n";
 if ($pedro instanceof InternshipStudent) {echo ($pedro instanceof InternshipStudent) . ' (1 = TRUE = cierto), $pedro es objeto/instancia de la Clase InternshipStudent';}
-echo "\n";
-echo 'Ojo : tanto usar print_r($array) me ha hecho olvidar la función var_dump';
 
 ?>
