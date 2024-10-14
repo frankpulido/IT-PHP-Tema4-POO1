@@ -16,13 +16,14 @@ $option = -1;
 
 do {
     echo PHP_EOL;
-    echo "1. Throw PokerDice." . PHP_EOL . "2. Throw PokerDice Set." . PHP_EOL . "3. Get the times a single dice has been thrown alone or as part of the set (5 dice)." . PHP_EOL . "4. Get the times the set of five dice has been thrown" . PHP_EOL;
+    echo "0. Exit." . PHP_EOL . "1. Throw PokerDice." . PHP_EOL . "2. Throw PokerDice Set." . PHP_EOL . "3. Get the times a single dice has been thrown alone or as part of the set (5 dice)." . PHP_EOL . "4. Get the times the set of five dice has been thrown" . PHP_EOL;
     echo PHP_EOL;
     $option = (int) readline("Your option : ");
     echo PHP_EOL;
     switch ($option) {
         case 0 :
             echo "See you later, alligator!!!..." . PHP_EOL;
+            echo PHP_EOL;
             break;
         case 1 :
             echo PokerDice::shapeNameDice();
@@ -34,6 +35,8 @@ do {
             break;
         case 3 :
             echo PokerDice::getTotalThrowsDice();
+            echo PHP_EOL;
+            echo PokerDice::getTotalThrowsDiceExplained();
             echo PHP_EOL;
             break;
         case 4 :
