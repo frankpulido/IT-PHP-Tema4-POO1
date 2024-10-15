@@ -12,6 +12,7 @@ $KISS = ['Keep', 'It', 'Simple', 'Stupid'];
 *** IMPORTANTE  : Estadísticamente, las probabilidades de obtener una combinación cualquiera de 5 resultados lanzando un set de 5 dados es la misma que la de obtener la misma combinación lanzando un único dado 5 veces.
 */
 
+$dice = new PokerDice;
 $option = -1;
 
 do {
@@ -26,21 +27,21 @@ do {
             echo PHP_EOL;
             break;
         case 1 :
-            echo PokerDice::shapeNameDice();
+            echo $dice->shapeNameDice();
             echo PHP_EOL;
             break;
         case 2 :
-            echo PokerDice::shapeNameSet();
+            echo $dice->shapeNameSet();
             echo PHP_EOL;
             break;
         case 3 :
-            echo PokerDice::getTotalThrowsDice();
+            echo $dice->getTotalThrowsDice();
             echo PHP_EOL;
-            echo PokerDice::getTotalThrowsDiceExplained();
+            echo $dice->getTotalThrowsDiceExplained();
             echo PHP_EOL;
             break;
         case 4 :
-            echo PokerDice::getTotalThrowsSet();
+            echo $dice->getTotalThrowsSet();
             echo PHP_EOL;
             break;
         default :
