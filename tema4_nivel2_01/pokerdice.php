@@ -2,14 +2,14 @@
 final class PokerDice {
 
     // Atributo
-    private static $dice = ['As', 'K', 'J', '7', '8'];
+    private const DICE = ['As', 'K', 'J', '7', '8'];
     private static int $totalThrowsDice = 0;
     private static int $totalThrowsSet = 0;
     // Constructor : NOT NEEDED
 
     // Getters
     public function getDice() {
-        return self::$dice;
+        return self::DICE;
     }
     public function getTotalThrowsDice() : int {
         return self::$totalThrowsDice;
@@ -29,7 +29,7 @@ final class PokerDice {
 
     // Función "ShapeNameDice" (resultado de la jugada)
     public function shapeNameDice() : string {
-        return "The outcome of the dice thrown is : " . self::$dice[self::throwDice()];
+        return "The outcome of the dice thrown is : " . self::DICE[self::throwDice()];
     }
 
     // Función "ShapeNameSet" (resultado de tirar el set de 5 dados)
