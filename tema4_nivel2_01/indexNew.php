@@ -2,7 +2,7 @@
 declare(strict_types=1);
 require "pokerSet.php";
 
-$diceSet = new PokerSet;
+$diceSet = new PokerSet; // He instanciado el dado 5 veces en el constructor de PokerSet
 $option = -1;
 
 do {
@@ -21,6 +21,8 @@ do {
             echo $diceSet->shapeNameDiceSet();
             echo PHP_EOL;
             break;
+        // Del enunciado no me queda claro si se desea conocer el número de lanzamientos del SET o si hay que decir también el total de dados que han rodado sobre la mesa
+        // En la versión en la que instanciaba un único dado reportaba ambos, puedo reintegrar esta forma de reportar los lanzamientos.
         case 2 :
             echo "The Dice Set (5 Poker Dice) has been thrown " . $diceSet->getTotalThrowsSet() . " times.";
             echo PHP_EOL;
