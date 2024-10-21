@@ -2,9 +2,24 @@
 declare(strict_types=1);
 require "pokerDice.php";
 
-/* README RUBÉN
+/*
 
-[ 2024 10 17 ] : He vuelto a la versión instanciable cambiando el atributo $dice por constante DICE... Me gustaba más la otra versión, tener todos los métodos de tipo static y no instanciar el Objeto sino dejarlo como "one of a kind" y sencillamente invocarlo en cada SWITCH-CASE con métodos que no requieren que se les pase parámetros :
+[ 2024 10 18 ] : CONTINUARÉ DESARROLLANDO ESTE EJERCICIO CON LA CLASE POKER DICE COMO UN SINGLETON
+Ayer descubrí que existe un DESIGN PATTERN conocido como SINGLETON que es precisamente lo que quiero hacer con el dado.
+IT Academy quiere que el ejercicio se haga instanciando 5 veces el dado, pero esto no tiene sentido. La razón es sencillamente un principio estadístico :
+La probabilidad de obtener un resultado cualquiera de combinación de 5 lanzamientos es EXACTAMENTE LA MISMA en estos 3 casos :
+1- Lanzando 5 dados a la vez.
+2- Lanzando 5 dados de 1 en 1.
+3. Lanzando un único dado, recogiéndolo y lanzándolo de nuevo 5 veces en total.
+
+El método throwDice en cualquier caso ha de ejecutarse 5 veces, pero no tiene sentido estadístico hacerlo sobre 5 objetos distintos.
+No nos interesa el dado (o los dados) en si mismos, nos interesa almacenar el resultado de los lanzamientos, algo que haremos en un atributo de la clase Player.
+IMPORTANTE : REVISAR LA KATA DEL TENNIS PARA ESTA NUEVA CLASE.
+
+*****
+
+[ 2024 10 17 ] : El ejercicio para IT Academy pasa a 3 nuevos archivos en branch MAIN : indexNew.php - PokerDiceNew.php - pokerSet.php
+He vuelto a la versión instanciable cambiando el atributo $dice por constante DICE... Me gustaba más la otra versión, tener todos los métodos de tipo static y no instanciar el Objeto sino dejarlo como "one of a kind" y sencillamente invocarlo en cada SWITCH-CASE con métodos que no requieren que se les pase parámetros :
 case 1 : PokerDice::method1()
 case 2 : PokerDice::method2()
 case 3 : PokerDice::method3()
@@ -30,8 +45,6 @@ $KISS = ['Keep', 'It', 'Simple', 'Stupid'];
 *** IMPORTANTE  : Estadísticamente, las probabilidades de obtener una combinación cualquiera de 5 resultados lanzando un set de 5 dados es la misma que la de obtener la misma combinación lanzando un único dado 5 veces.
 
 */
-
-$dice = new PokerDice;
 $option = -1;
 
 do {
@@ -46,21 +59,23 @@ do {
             echo PHP_EOL;
             break;
         case 1 :
-            echo $dice->shapeNameDice();
+            PokerDice::throwDice();
+            echo PokerDice::shapeNameDice();
             echo PHP_EOL;
             break;
         case 2 :
-            echo $dice->shapeNameSet();
+            PokerDice::throwDiceSet();
+            echo PokerDice::shapeNameSet();
             echo PHP_EOL;
             break;
         case 3 :
-            echo $dice->getTotalThrowsDice();
+            echo PokerDice::getTotalThrowsDice();
             echo PHP_EOL;
-            echo $dice->getTotalThrowsDiceExplained();
+            echo PokerDice::getTotalThrowsDiceExplained();
             echo PHP_EOL;
             break;
         case 4 :
-            echo $dice->getTotalThrowsSet();
+            echo PokerDice::getTotalThrowsSet();
             echo PHP_EOL;
             break;
         default :
