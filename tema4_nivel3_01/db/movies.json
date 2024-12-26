@@ -1,0 +1,142 @@
+[
+    {
+        "id_movie": 1,
+        "title": "Dogville",
+        "director_id": 1,
+        "runtime": 178,
+        "poster": null
+    },
+    {
+        "id_movie": 2,
+        "title": "Magnolia",
+        "director_id": 2,
+        "runtime": 188,
+        "poster": null
+    },
+    {
+        "id_movie": 3,
+        "title": "Life is Beautiful",
+        "director_id": 3,
+        "runtime": 116,
+        "poster": null
+    },
+    {
+        "id_movie": 4,
+        "title": "Coffee And Cigarettes",
+        "director_id": 4,
+        "runtime": 95,
+        "poster": null
+    },
+    {
+        "id_movie": 5,
+        "title": "Gran Torino",
+        "director_id": 5,
+        "runtime": 116,
+        "poster": null
+    },
+    {
+        "id_movie": 6,
+        "title": "2001 : A Space Odissey",
+        "director_id": 6,
+        "runtime": 149,
+        "poster": null
+    },
+    {
+        "id_movie": 7,
+        "title": "The Secret Life Of Walter Mitty",
+        "director_id": 7,
+        "runtime": 114,
+        "poster": null
+    },
+    {
+        "id_movie": 8,
+        "title": "Layer Cake",
+        "director_id": 8,
+        "runtime": 105,
+        "poster": null
+    },
+    {
+        "id_movie": 9,
+        "title": "Sin City",
+        "director_id": 9,
+        "runtime": 124,
+        "poster": null
+    },
+    {
+        "id_movie": 10,
+        "title": "The Island",
+        "director_id": 10,
+        "runtime": 136,
+        "poster": null
+    },
+    {
+        "id_movie": 11,
+        "title": "Jerry Maguire",
+        "director_id": 11,
+        "runtime": 139,
+        "poster": null
+    },
+    {
+        "id_movie": 12,
+        "title": "Wonder",
+        "director_id": 12,
+        "runtime": 113,
+        "poster": null
+    },
+    {
+        "id_movie": 13,
+        "title": "Once Upon A Time In... Hollywood",
+        "director_id": 13,
+        "runtime": 161,
+        "poster": null
+    },
+    {
+        "id_movie": 14,
+        "title": "Reservoir Dogs",
+        "director_id": 13,
+        "runtime": 99,
+        "poster": null
+    },
+    {
+        "id_movie": 15,
+        "title": "Pulp Fiction",
+        "director_id": 13,
+        "runtime": 154,
+        "poster": null
+    },
+    {
+        "id_movie": 16,
+        "title": "Meet The Parents",
+        "director_id": 14,
+        "runtime": 108,
+        "poster": null
+    },
+    {
+        "id_movie": 17,
+        "title": "Burn After Reading",
+        "director_id": 15,
+        "runtime": 96,
+        "poster": null
+    },
+    {
+        "id_movie": 18,
+        "title": "Everything Everywhere All At Once",
+        "director_id": 16,
+        "runtime": 139,
+        "poster": null
+    },
+    {
+        "id_movie": 19,
+        "title": "Mulholland Drive",
+        "director_id": 17,
+        "runtime": 147,
+        "poster": null
+    },
+    {
+        "id_movie": 20,
+        "title": "The Matrix",
+        "director_id": 18,
+        "runtime": 136,
+        "poster": null
+    }
+]

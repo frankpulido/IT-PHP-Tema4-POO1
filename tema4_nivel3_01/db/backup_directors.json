@@ -1,0 +1,74 @@
+[
+    {
+        "id_director": 1,
+        "director_name": "Lars von Trier"
+    },
+    {
+        "id_director": 2,
+        "director_name": "Paul Thomas Anderson"
+    },
+    {
+        "id_director": 3,
+        "director_name": "Roberto Benigni"
+    },
+    {
+        "id_director": 4,
+        "director_name": "Jim Jarmusch"
+    },
+    {
+        "id_director": 5,
+        "director_name": "Clint Eastwood"
+    },
+    {
+        "id_director": 6,
+        "director_name": "Stanley Kubrick"
+    },
+    {
+        "id_director": 7,
+        "director_name": "Ben Stiller"
+    },
+    {
+        "id_director": 8,
+        "director_name": "Matthew Vaughn"
+    },
+    {
+        "id_director": 9,
+        "director_name": "Frank Miller"
+    },
+    {
+        "id_director": 10,
+        "director_name": "Michael Bay"
+    },
+    {
+        "id_director": 11,
+        "director_name": "Cameron Crowe"
+    },
+    {
+        "id_director": 12,
+        "director_name": "Stephen Chbosky"
+    },
+    {
+        "id_director": 13,
+        "director_name": "Quentin Tarantino"
+    },
+    {
+        "id_director": 14,
+        "director_name": "Jay Roach"
+    },
+    {
+        "id_director": 15,
+        "director_name": "Ethan & Joel Coen"
+    },
+    {
+        "id_director": 16,
+        "director_name": "Daniel Kwan and Daniel Scheinert"
+    },
+    {
+        "id_director": 17,
+        "director_name": "David Lynch"
+    },
+    {
+        "id_director": 18,
+        "director_name": "Lana Wachowski and Lilly Wachowski"
+    }
+]

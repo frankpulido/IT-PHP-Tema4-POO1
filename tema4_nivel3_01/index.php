@@ -1,6 +1,7 @@
 <?php
-require "movie.php";
-require "theater.php";
+require_once __DIR__ . '/models/director.php';
+require_once __DIR__ . '/models/movie.php';
+require_once __DIR__ . '/models/theater.php';
 /*
 Frank Pulido - Tema 4 [POO1] - Nivel 3 - Ejercicio 1
 
@@ -17,7 +18,6 @@ Se trata de hacer un programa que nos permita grabar esta información para desp
 Además, puedes aprovechar este ejercicio para trabajar una buena presentación con HTML+CSS que apoye la lógica.
 
 RECURSOS :
-
 
 IDEAS :
 1) PARA MOSTRAR CATÁLOGO DE PELIS CON NÚMERO QUE DIGA EN CUANTOS CINES ESTÁ (INCLUIDO EL CERO).
@@ -60,7 +60,7 @@ $movie2 = new Movie("Magnolia", "Paul Thomas Anderson", 3, 8);
 $movie3 = new Movie("La Vida Es Bella", "Roberto Benigni", 1, 56);
 $movie4 = new Movie("Coffee And Cigarettes", "Jim Jarmusch", 1, 35);
 $movie5 = new Movie("Gran Torino", "Clint Eastwood", 1, 56);
-$movie6 = new Movie("2001 : A Space Odissey", "Stanley Kubrick", 5, 5);
+$movie6 = new Movie("2001 : A Space Odissey", "Stanley Kubrick", 2, 29);
 $movie7 = new Movie("The Secret Life Of Walter Mitty", "Ben Stiller", 1, 54);
 $movie8 = new  Movie("Layer Cake", "Matthew Vaughn", 1, 45);
 $movie9 = new Movie("Sin City", "Frank Miller", 2, 4);
@@ -122,7 +122,7 @@ do {
             $hours = (int) readline("La duración de la película está expresada en \"HORAS\" y \"MINUTOS\". Indique primero las HORAS : ");
             $minutes = (int) readline("Indique ahora los MINUTOS : ");
             $movies [] = newMovie($title, $director, $hours, $minutes);
-            echo "\nLa nueva película ha sido dada de alta :\n" . $movies[count($movies)-1]->aboutMovie() . "\n\n";
+            echo "\nLa nueva película ha sido dada de alta :\n" . $movies[count($movies)-1] . "\n\n";
             break;
         default :
         break;
@@ -142,13 +142,14 @@ function newTheater($movies) {
         echo "\n";
         $name = readline("Nombre del cine " . ($i+1) . " : ");
         $location = readline("Población del cine $name : ");
-        $cinemasNew [] = new MovieTheather($name, $location);
+        $screens = readline("Número de salas de cine : ");
+        $cinemasNew [] = new MovieTheater($name, $location, $screens);
     }
     echo "\nA continuación daremos de alta la oferta de cada sala de cine dada de alta anteriormente.\n";
     foreach ($cinemasNew as $cinema) {
         unset($catalog);
         $i = 0;
-        echo "\nSeleccione las películas que quiere dar de alta en " . $cinema->getName() . " de " . $cinema->getLocation() . " :\n";
+        echo "\nSeleccione las películas que quiere dar de alta en " . $cinema->getName() . " de " . $cinema->getCity() . " :\n";
         foreach ($movies as $movie) {
             echo "\n";
             echo $i . " " . $movie->aboutMovie(); // quizás deba usar un iterador $i como en la funcion al final
@@ -229,7 +230,7 @@ function showing($cinemas) {
     echo"\n";
     $indexCine = (int)readline("Indique el número de la Sala de Cine \"[?]\" cuyas funciones desea conocer : ");
     echo "\n";
-    echo "Funciones de la Sala de Cine " . $cinemas[$indexCine]->getName() . " de " . $cinemas[$indexCine]->getLocation() . " :\n";
+    echo "Funciones de la Sala de Cine " . $cinemas[$indexCine]->getName() . " de " . $cinemas[$indexCine]->getCity() . " :\n";
     unset($catalog);
     $catalog = $cinemas[$indexCine]->getShowing();
     echo "\n";

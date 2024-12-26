@@ -1,0 +1,44 @@
+[
+    {
+        "id_theater" : 1,
+        "name" : "Renoir Floridabalanca",
+        "city" : "Barcelona",
+        "screens" : 5,
+        "showing" : [1,3,5,7,9]
+    },
+    {
+        "id_theater" : 2,
+        "name" : "Els Germans Rocky",
+        "city" : "Girona",
+        "screens" : 5,
+        "showing" : [2,4,6,8,10]
+    },
+    {
+        "id_theater" : 3,
+        "name" : "Woody Alern",
+        "city" : "Barcelona",
+        "screens" : 5,
+        "showing" : [11,13,15,17,19]
+    },
+    {
+        "id_theater" : 4,
+        "name" : "Montse Belucci",
+        "city" : "Manresa",
+        "screens" : 5,
+        "showing" : [12,14,16,18,20]
+    },
+    {
+        "id_theater" : 5,
+        "name" : "Anxoveta",
+        "city" : "l'Escala",
+        "screens" : 6,
+        "showing" : [2,4,6,15,17,19]
+    },
+    {
+        "id_theater" : 6,
+        "name" : "Screens Callos",
+        "city" : "Madrid",
+        "screens" : 7,
+        "showing" : [1,3,5,7,12,14,16]
+    }
+]
