@@ -73,7 +73,8 @@ class Movie {
             'id_movie' => $this->id_movie,
             'title' => $this->title,
             'director_id' => $this->director_id,
-            'runtime' => $this->runtime
+            'runtime' => $this->runtime,
+            'poster' => $this->poster
         ];
     }
 
