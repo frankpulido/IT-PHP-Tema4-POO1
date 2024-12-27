@@ -4,10 +4,6 @@ declare(strict_types=1);
 require_once __DIR__ . '/models/admin.php';
 $admin = new Admin();
 
-//$movies = $admin->getMovies();
-//$directors = $admin->getDirectors();
-//$theaters = $admin->getTheaters();
-
 $choice = -1;
 
 do {

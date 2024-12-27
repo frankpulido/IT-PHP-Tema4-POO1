@@ -218,15 +218,18 @@ class Admin {
         }
         else {
             if($theater['screens'] > count($theater['showing'])) {
-                $new_showing = $theater['showing'];
-                $new_showing[] = $id_movie;
+                //$new_showing = $theater['showing'];
+                //$new_showing[] = $id_movie;
                 $theaters = $this->theaters;
-                foreach($theaters as $theater) {
+                foreach($theaters as &$theater) {
                     if ($theater['id_theater'] == $id_theater) {
-                        $theater['showing'] = $new_showing;
+                        $theater['showing'][] = $id_movie;
+                        sort($theater['showing']); // Reindex and reorders the array
                     }
                 }
+                unset($theater);
                 file_put_contents($this->theatersPath, json_encode($theaters, JSON_PRETTY_PRINT));
+                $this->updateTheaters();
                 return "Movie successfully added ON SCREEN." . PHP_EOL . $this->getTheaterById($id_theater);
             }
             return "All screens have a Movie assigned, you have to eliminate a Movie from screen before adding a new one.";
@@ -234,7 +237,23 @@ class Admin {
     }
 
     public function removeMovieFromShowing($id_movie, $id_theater) {
-        echo "Still to develop : remove movie ID $id_movie from screen in theater ID $id_theater";
+        $theaters = $this->theaters;
+        $theater = $this->getTheaterById($id_theater)->toArray();
+        if(in_array($id_movie, $theater['showing'])) {
+            foreach($theaters as &$theater) {
+                if ($theater['id_theater'] == $id_theater) {
+                    $key = array_search($id_movie, $theater['showing']); // Locate the index of the movie ID
+                    if ($key !== false) {
+                        unset($theater['showing'][$key]); // Remove the movie ID
+                    }
+                }
+            }
+            unset($theater);
+            file_put_contents($this->theatersPath, json_encode($theaters, JSON_PRETTY_PRINT));
+            $this->updateTheaters();
+            return "The movie with [ID : $id_movie] is no longer on Screen in Movie Theater [ID : $id_theater]" . PHP_EOL . $this->getTheaterById($id_theater) . PHP_EOL;
+        }
+        return "The Movie with [ID : $id_movie] is not on Screen in Movie Theater [ID : $id_theater]" . PHP_EOL . $this->getTheaterById($id_theater);
     }
 
     function menuDirectors() {
